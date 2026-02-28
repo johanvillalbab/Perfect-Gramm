@@ -1,0 +1,289 @@
+@font-face {
+  font-family: "Mono";
+  src: local("SF Mono"), local("Menlo"), local("Monaco"), local("Consolas"), local("monospace");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 380px;
+  font-family: "SF Mono", "Menlo", "Monaco", "Consolas", "Liberation Mono", monospace;
+  font-size: 12px;
+  background: #0a0a0a;
+  color: #a0a0a0;
+  -webkit-font-smoothing: antialiased;
+}
+
+.terminal {
+  border: 1px solid #222;
+  overflow: hidden;
+}
+
+.titlebar {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  background: #161616;
+  border-bottom: 1px solid #222;
+  gap: 10px;
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dot-red { background: #ff5f57; }
+.dot-yellow { background: #febc2e; }
+.dot-green { background: #28c840; }
+
+.titlebar-text {
+  flex: 1;
+  text-align: center;
+  font-size: 11px;
+  color: #555;
+}
+
+.toggle {
+  position: relative;
+  width: 32px;
+  height: 16px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background: #2a2a2a;
+  border-radius: 16px;
+  transition: background 0.2s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #555;
+  left: 2px;
+  top: 2px;
+  transition: all 0.2s;
+}
+
+.toggle input:checked + .slider {
+  background: #1a3a2a;
+}
+
+.toggle input:checked + .slider::before {
+  background: #28c840;
+  transform: translateX(16px);
+}
+
+.body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 20px;
+  line-height: 20px;
+}
+
+.prompt {
+  color: #28c840;
+}
+
+.prompt::before {
+  content: "❯";
+  margin-right: 4px;
+  color: #555;
+}
+
+.cmd {
+  color: #e0e0e0;
+}
+
+.flag {
+  color: #6ba1f7;
+}
+
+.output-line {
+  color: #555;
+  padding-left: 18px;
+  font-size: 11px;
+}
+
+.field-row {
+  padding-left: 18px;
+  margin: 2px 0 6px 0;
+}
+
+.cli-select {
+  background: #111;
+  color: #28c840;
+  border: 1px solid #2a2a2a;
+  padding: 4px 8px;
+  font-family: inherit;
+  font-size: 12px;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.cli-select::after {
+  content: " ▾";
+}
+
+.cli-select option {
+  background: #111;
+  color: #28c840;
+}
+
+.cli-select:focus {
+  border-color: #28c840;
+}
+
+.cli-textarea {
+  width: 100%;
+  background: #111;
+  color: #e0e0e0;
+  border: 1px solid #2a2a2a;
+  padding: 8px;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.5;
+  resize: none;
+  outline: none;
+  border-radius: 3px;
+  margin: 2px 0 4px 0;
+}
+
+.cli-textarea:focus {
+  border-color: #333;
+}
+
+.cli-textarea::placeholder {
+  color: #333;
+}
+
+.cli-btn {
+  width: 100%;
+  background: #111;
+  color: #28c840;
+  border: 1px solid #2a2a2a;
+  padding: 6px 0;
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background 0.15s, border-color 0.15s;
+  text-align: center;
+}
+
+.cli-btn:hover {
+  background: #1a1a1a;
+  border-color: #28c840;
+}
+
+.cli-btn:active {
+  background: #0d1f12;
+}
+
+.cli-btn:disabled {
+  color: #333;
+  border-color: #1a1a1a;
+  cursor: default;
+}
+
+.results {
+  margin-top: 6px;
+  border: 1px solid #2a2a2a;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.result-item {
+  padding: 6px 8px;
+  border-bottom: 1px solid #1a1a1a;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.result-item:last-child {
+  border-bottom: none;
+}
+
+.result-category {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.result-category.spelling { color: #ff5f57; }
+.result-category.grammar { color: #febc2e; }
+.result-category.style { color: #6ba1f7; }
+
+.result-message {
+  color: #888;
+  margin-bottom: 3px;
+}
+
+.result-context {
+  color: #555;
+}
+
+.result-context .error-text {
+  color: #ff5f57;
+  text-decoration: line-through;
+}
+
+.result-context .suggestion {
+  color: #28c840;
+  font-weight: 600;
+}
+
+.result-success {
+  padding: 8px;
+  color: #28c840;
+  font-size: 11px;
+  text-align: center;
+}
+
+.footer-line {
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid #1a1a1a;
+}
+
+.dim {
+  color: #333;
+  font-size: 10px;
+}

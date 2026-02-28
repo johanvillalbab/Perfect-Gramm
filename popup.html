@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfect Gramm</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="terminal">
+    <div class="titlebar">
+      <div class="dots">
+        <span class="dot dot-red"></span>
+        <span class="dot dot-yellow"></span>
+        <span class="dot dot-green"></span>
+      </div>
+      <span class="titlebar-text">perfect-gramm — zsh</span>
+      <label class="toggle">
+        <input type="checkbox" id="enableToggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="body">
+      <div class="line">
+        <span class="prompt">~</span>
+        <span class="cmd">perfect-gramm <span class="flag">--version</span> 1.0.0</span>
+      </div>
+      <div class="line output-line">Corrector ES/EN activo.</div>
+
+      <div class="line">
+        <span class="prompt">~</span>
+        <span class="cmd">config <span class="flag">--lang</span></span>
+      </div>
+      <div class="field-row">
+        <select id="language" class="cli-select">
+          <option value="es">es</option>
+          <option value="en-US">en-US</option>
+        </select>
+      </div>
+
+      <div class="line">
+        <span class="prompt">~</span>
+        <span class="cmd">check <span class="flag">--input</span></span>
+      </div>
+      <textarea id="testArea" class="cli-textarea" rows="3" placeholder="Escribe tu texto aquí..." spellcheck="false"></textarea>
+
+      <button id="checkBtn" class="cli-btn">$ ejecutar revisión</button>
+
+      <div id="results" class="results" style="display:none;"></div>
+
+      <div class="line footer-line">
+        <span class="dim">powered by languagetool api</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

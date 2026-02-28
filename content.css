@@ -1,0 +1,209 @@
+.pg-error-highlight {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='3'%3E%3Cpath d='M0 3 Q1 0 2 3 Q3 6 4 3' fill='none' stroke='%23ff5f57' stroke-width='1'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: 4px 3px;
+  padding-bottom: 2px;
+  cursor: pointer;
+  position: relative;
+}
+
+.pg-error-highlight.pg-style {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='3'%3E%3Cpath d='M0 3 Q1 0 2 3 Q3 6 4 3' fill='none' stroke='%236ba1f7' stroke-width='1'/%3E%3C/svg%3E");
+}
+
+.pg-error-highlight.pg-grammar {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='3'%3E%3Cpath d='M0 3 Q1 0 2 3 Q3 6 4 3' fill='none' stroke='%23febc2e' stroke-width='1'/%3E%3C/svg%3E");
+}
+
+/* Badge — 12px, discreto */
+
+.pg-badge {
+  position: fixed;
+  z-index: 2147483646;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #28c840;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+  transition: opacity 0.2s;
+  font-size: 0;
+  line-height: 0;
+  opacity: 0.6;
+  padding: 0;
+}
+
+.pg-badge:hover {
+  opacity: 1;
+}
+
+.pg-badge.pg-has-errors {
+  background: #ff5f57;
+  opacity: 0.8;
+}
+
+.pg-badge.pg-has-errors:hover {
+  opacity: 1;
+}
+
+.pg-checking {
+  background: #555 !important;
+  opacity: 0.5 !important;
+  animation: pg-pulse 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes pg-pulse {
+  from { opacity: 0.3; }
+  to { opacity: 0.6; }
+}
+
+/* Tooltip — CLI theme */
+
+.pg-tooltip {
+  position: fixed;
+  z-index: 2147483647;
+  background: #0a0a0a;
+  color: #a0a0a0;
+  border-radius: 4px;
+  padding: 0;
+  min-width: 280px;
+  max-width: 380px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  font-family: "SF Mono", "Menlo", "Monaco", "Consolas", monospace;
+  font-size: 11px;
+  line-height: 1.5;
+  animation: pg-fade-in 0.1s ease-out;
+  border: 1px solid #2a2a2a;
+  overflow: hidden;
+}
+
+@keyframes pg-fade-in {
+  from { opacity: 0; transform: translateY(2px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pg-tooltip-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  background: #111;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.pg-tooltip-category {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #ff5f57;
+}
+
+.pg-tooltip-category.pg-cat-style {
+  color: #6ba1f7;
+}
+
+.pg-tooltip-category.pg-cat-grammar {
+  color: #febc2e;
+}
+
+.pg-tooltip-close {
+  background: none;
+  border: none;
+  color: #444;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1;
+  padding: 0 2px;
+  transition: color 0.15s;
+}
+
+.pg-tooltip-close:hover {
+  color: #ff5f57;
+}
+
+.pg-tooltip-body {
+  padding: 8px 10px;
+}
+
+.pg-tooltip-message {
+  margin: 0 0 6px 0;
+  color: #888;
+  font-size: 11px;
+}
+
+.pg-tooltip-original {
+  color: #ff5f57;
+  text-decoration: line-through;
+  font-size: 11px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.pg-tooltip-original::before {
+  content: "- ";
+  color: #ff5f57;
+}
+
+.pg-tooltip-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.pg-suggestion-btn {
+  background: #111;
+  color: #28c840;
+  border: 1px solid #2a2a2a;
+  padding: 3px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 11px;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.pg-suggestion-btn::before {
+  content: "+ ";
+  color: #28c840;
+}
+
+.pg-suggestion-btn:hover {
+  background: #1a2e1a;
+  border-color: #28c840;
+  color: #fff;
+}
+
+.pg-tooltip-footer {
+  padding: 5px 10px;
+  border-top: 1px solid #1a1a1a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d0d0d;
+}
+
+.pg-tooltip-rule {
+  font-size: 9px;
+  color: #333;
+}
+
+.pg-ignore-btn {
+  background: none;
+  border: 1px solid #222;
+  color: #555;
+  padding: 2px 6px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 10px;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.pg-ignore-btn:hover {
+  border-color: #444;
+  color: #aaa;
+}
